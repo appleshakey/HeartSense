@@ -3,8 +3,10 @@ import Navbar from "@/components/Navbar"
 import { useState } from "react"
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/components/firebase";
+import { useRouter } from "next/navigation";
 
 export default function SignUp(){
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -12,7 +14,11 @@ export default function SignUp(){
         e.preventDefault(); 
         setEmail("");
         setPassword("");
-        await createUserWithEmailAndPassword(auth, email, password).then(() => console.log("user created!!")).catch((e) => console.log(`${e.code} => ${e.message}`))
+        await createUserWithEmailAndPassword(auth, email, password).then(() =>{ console.log("user created!!")
+        router.push("/signin")
+        }
+        
+    ).catch((e) => console.log(`${e.code} => ${e.message}`))
     }
 
     return (

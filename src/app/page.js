@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="">
       <Navbar />
@@ -56,7 +59,7 @@ export default function Home() {
           </div>
           </div>
           <div>
-            <button>Sign Up Now</button>
+            <button className="underline text-primary text-3xl font-staat" onClick={() => router.push("/signup")}>Sign Up Now</button>
           </div>
         </div>
       </div>
